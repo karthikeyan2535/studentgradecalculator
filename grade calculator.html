@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+</head>
+<body>
+    <h1>Student Grade Calculator</h1>
+    <form id="grade-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="assignment1">Assignment 1:</label>
+        <input type="number" id="assignment1" name="assignment1" min="0" max="100" required>
+        <br>
+        <label for="assignment2">Assignment 2:</label>
+        <input type="number" id="assignment2" name="assignment2" min="0" max="100" required>
+        <br>
+        <label for="assignment3">Assignment 3:</label>
+        <input type="number" id="assignment3" name="assignment3" min="0" max="100" required>
+        <br>
+        <label for="assignment4">Assignment 4:</label>
+        <input type="number" id="assignment4" name="assignment4" min="0" max="100" required>
+        <br>
+        <label for="assignment5">Assignment 5:</label>
+        <input type="number" id="assignment5" name="assignment5" min="0" max="100" required>
+        <br>
+        <button type="submit">Calculate Grade</button>
+    </form>
+    <h2 id="result"></h2>
+    <script>
+        document.getElementById('grade-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const assignment1 = parseInt(document.getElementById('assignment1').value);
+            const assignment2 = parseInt(document.getElementById('assignment2').value);
+            const assignment3 = parseInt(document.getElementById('assignment3').value);
+            const assignment4 = parseInt(document.getElementById('assignment4').value);
+            const assignment5 = parseInt(document.getElementById('assignment5').value);
+            const average = (assignment1 + assignment2 + assignment3 + assignment4 + assignment5) / 5;
+            const grade = average >= 90 ? 'A' : average >= 80 ? 'B' : average >= 70 ? 'C' : average >= 60 ? 'D' : 'F';
+            document.getElementById('result').textContent = `Hello, ${name}! Your grade is ${grade} (${average.toFixed(2)}).`;
+        });
+    </script>
+</body>
+</html>
